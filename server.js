@@ -83,13 +83,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/articleName', function (req, res) {
-    // articleName == article-one
+app.get(':articleName', function (req, res) {
+    // when we put the colon before teh articlename, it will do the matching an dconvert that into a variable
+    // (this is part of the express package) so that articleNaem === article-one, etc
     //articles[articleName] == () content object for article one
     //object names at lines 9, 29, 37 are changed to match with article-one etc & put in quotes
     //to extract the articleName value, the following line is added, a functionality of 'express' framework
     var articleName = req.params.articleName;
-  res.send(createTemplate(articleOne));
+  res.send(createTemplate(articles[articleName]));
 });
 
 
