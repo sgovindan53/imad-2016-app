@@ -30,17 +30,17 @@ var articles = {
     title: 'Article Two | Suthan Govindan',
     heading:'Article Two',
     date: 'Sep 10, 2016',
-        content: `<p>
+        content:  <p>
                         This is the content for my second article. 
-                   </p>`
+                  </p>
 },
 'article-three': {                      //see remarks at line 89
     title: 'Article Three | Suthan Govindan',
     heading: 'Article Three',
     date: 'Sep 15, 2016',
-        content: `<p>
+        content:  <p>
                         This is the content for my third article. 
-                   </p>`
+                  </p>
 },
 };
 
@@ -49,7 +49,7 @@ function createTemplate (data) {
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
-var htmlTemplate = `<html>
+var htmlTemplate =  `<html>
     <head>
         
         <title>
