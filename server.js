@@ -83,6 +83,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var counter = 0;
+app.get('/counter', function (req, res) {
+    counter = counter +1;
+    res.send(counter.toString());
+});
+
 app.get(':articleName', function (req, res) {
     // when we put the colon before teh articlename, it will do the matching an dconvert that into a variable
     // (this is part of the express package) so that articleNaem === article-one, etc
