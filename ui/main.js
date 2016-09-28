@@ -1,16 +1,26 @@
 // Counter code
 var button = document.getElementbyId('counter');
-var counter =0;
+
 button.onclick = function() {
     
-    //make a request to the counter endpoint
+    //create a request object
+    var request = XMLHttpRequest();
     
     //capture the response and store it in our variable
-    
-    //render the variable in the correct span
-    counter = counter + 1;
-    var span = document.getElementbyId('count');
-    span.innerHTML = counter.toString();
-    
+    request.onreadystatechange = function() {
+       if (request.readystate === XMLHttpRequest.DONE) {
+             //TAKE SOME ACTION
+            IF (request.status ===200) {
+                var counter = request.responseText;
+                var span = document.getElementbyId('count');
+                span.innerHTML = counter.toString();
+                
+              }
+            }
+           
+       };
+  // make the request
+  request.open('GET', 'http://sgovindan53.imad.hasura-app.io/counter', true);
+  request.send(null);
 };
     
