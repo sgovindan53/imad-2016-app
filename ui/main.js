@@ -4,8 +4,10 @@ var counter = 0;
 button.onclick = function() {
     
     //create a request object
+    var request = new XMLHttpRequest();
     
     //capture the response and store it in our variable
+    
     
     
     //Render the variable in the correct span
