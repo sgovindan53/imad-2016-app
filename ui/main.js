@@ -12,17 +12,14 @@ button.onclick = function() {
          //TAKE SOME ACTION
         if (request.status ===200) {
         var counter = request.responseText;
-        counter=counter+1;
+        
         var span = document.getElementById('count');
         span.innerHTML = counter.toString();
-
+        //counter=counter+1;
         }
        }
     };
-    //Render the variable in the correct span
-   // counter = counter + 1;
-   // var span = document.getElementById('count');
-  //  span.innerHTML = counter.toString();
+    
   request.open('GET', 'http://sgovindan53.imad.hasura-app.io/counter', true);
   request.send(null);
                 
