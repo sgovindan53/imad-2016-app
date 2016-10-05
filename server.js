@@ -89,6 +89,16 @@ app.get('/counter', function (req, res) {
     res.send(counter.toString());
 });
 
+var names=[];
+app.get('/submit-name', function(req, res) {
+    //get the name from the request object
+    var name = req.query.name; 
+    
+    names.push(name);
+    //JSON - javascript object notation
+    res.send(JSON.stringify(names)); 
+});
+
 app.get(':articleName', function (req, res) {
     // when we put the colon before teh articlename, it will do the matching an dconvert that into a variable
     // (this is part of the express package) so that articleNaem === article-one, etc
@@ -112,15 +122,6 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-var names=[];
-app.get('/submit-name/:name', function(req, res) {
-    //get the name from the request object
-    var name = req.params.name; 
-    
-    names.push(name);
-    //JSON - javascript object notation
-    res.send(JSON.stringify(names)); 
-});
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
