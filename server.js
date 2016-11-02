@@ -134,8 +134,10 @@ app.get('/articles/:articleName', function (req, res) {
   //res.send(createTemplate(articles[articleName]));
   //var articleData = * this is replaced with pool command below
  // pool.query("SELECT * FROM article WHERE title = 'article-one'"); here again value of artcle-one shoudl come from parameter
- // so this lien is again replaced by teh one below
- pool.query("SELECT * FROM article WHERE title = " + req.params.articleName, function (err, result){
+ // so this line is again replaced by the one below
+ //why ' and " around teh params portion; if single quote not given, the code interprets article-one as article minus one and error 
+ // message is displayed. (Try running this code without the single quote)
+ pool.query("SELECT * FROM article WHERE title = " + req.params.articleName +"", function (err, result){
    if (err)  {
        res.tatus(500).send(err.toString());
    }
