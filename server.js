@@ -125,19 +125,12 @@ app.get('/submit-name', function(req, res) {
 });
 
 app.get('/articles/:articleName', function (req, res) {
-    // when we put the colon before teh articlename, it will do the matching an dconvert that into a variable
-    // (this is part of the express package) so that articleNaem === article-one, etc
-    //articles[articleName] == () content object for article one
-    //object names at lines 9, 29, 37 are changed to match with article-one etc & put in quotes
-    //to extract the articleName value, the following line is added, a functionality of 'express' framework
+    
     var articleName = req.params.articleName;
-  //res.send(createTemplate(articles[articleName]));
-  //var articleData = * this is replaced with pool command below
- // pool.query("SELECT * FROM article WHERE title = 'article-one'"); here again value of artcle-one shoudl come from parameter
- // so this line is again replaced by the one below
+  
  //why ' and " around teh params portion; if single quote not given, the code interprets article-one as article minus one and error 
  // message is displayed. (Try running this code without the single quote)
- pool.query("SELECT * FROM article WHERE title = '" + req.params.articleName +"'", function (err, result){
+ pool.query("SELECT * FROM article WHERE title = '" + req.params.articleName +"'", function (err, result) {
    if (err)  {
        res.status(500).send(err.toString());
    }
