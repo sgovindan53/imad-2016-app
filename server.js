@@ -124,14 +124,32 @@ app.get('/submit-name', function(req, res) {
     res.send(JSON.stringify(names)); 
 });
 
-app.get(':articleName', function (req, res) {
+app.get('/articles/:articleName', function (req, res) {
     // when we put the colon before teh articlename, it will do the matching an dconvert that into a variable
     // (this is part of the express package) so that articleNaem === article-one, etc
     //articles[articleName] == () content object for article one
     //object names at lines 9, 29, 37 are changed to match with article-one etc & put in quotes
     //to extract the articleName value, the following line is added, a functionality of 'express' framework
     var articleName = req.params.articleName;
-  res.send(createTemplate(articles[articleName]));
+  //res.send(createTemplate(articles[articleName]));
+  //var articleData = * this is replaced with pool command below
+ // pool.query("SELECT * FROM article WHERE title = 'article-one'"); here again value of artcle-one shoudl come from parameter
+ // so this lien is again replaced by teh one below
+ pool.query("SELECT * FROM article WHERE title = " + req.params.articleName, function (err, result){
+   if (err)  {
+       res.tatus(500).send(err.toString());
+   }
+       else {
+          if (result.rows.length===0){
+              res.status(404).send('Article not found');
+            }
+              else {
+                  var articleData = result.rows(0);
+                  res.send(createTemplate(articleData));
+                  }
+   }
+ });
+ // res.send(createTemplate(articleData));  - this line is moved to under var articleData=result.rows(0) above
 });
 
 
