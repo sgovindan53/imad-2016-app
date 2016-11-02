@@ -139,7 +139,7 @@ app.get('/articles/:articleName', function (req, res) {
  // message is displayed. (Try running this code without the single quote)
  pool.query("SELECT * FROM article WHERE title = '" + req.params.articleName +"'", function (err, result){
    if (err)  {
-       res.tatus(500).send(err.toString());
+       res.status(500).send(err.toString());
    }
        else {
           if (result.rows.length===0){
