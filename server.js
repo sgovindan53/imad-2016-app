@@ -137,7 +137,7 @@ app.get('/articles/:articleName', function (req, res) {
  // so this line is again replaced by the one below
  //why ' and " around teh params portion; if single quote not given, the code interprets article-one as article minus one and error 
  // message is displayed. (Try running this code without the single quote)
- pool.query("SELECT * FROM article WHERE title = " + req.params.articleName +"", function (err, result){
+ pool.query("SELECT * FROM article WHERE title = '" + req.params.articleName +"'", function (err, result){
    if (err)  {
        res.tatus(500).send(err.toString());
    }
