@@ -130,7 +130,8 @@ app.get('/articles/:articleName', function (req, res) {
   
  //why ' and " around teh params portion; if single quote not given, the code interprets article-one as article minus one and error 
  // message is displayed. (Try running this code without the single quote)
- pool.query("SELECT * FROM article WHERE title =   req.params.articleName +", function (err, result) {
+ pool.query("SELECT * FROM article ")
+ //WHERE title =   req.params.articleName +", function (err, result) {
    if (err) {
        res.status(500).send(err.toString());
    } else {
@@ -142,7 +143,7 @@ app.get('/articles/:articleName', function (req, res) {
        }
    }
 
-});
+
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
