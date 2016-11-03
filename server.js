@@ -141,7 +141,7 @@ app.get('/articles/:articleName', function (req, res) {
            res.send(createTemplate(articleData));
        }
    }
-
+});
 
 });
 app.get('/ui/style.css', function (req, res) {
