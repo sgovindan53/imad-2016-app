@@ -123,7 +123,7 @@ app.get('/submit-name', function(req, res) {
     //JSON - javascript object notation
     res.send(JSON.stringify(names)); 
 });
-
+var pool = new Pool(config);
 app.get('/articles/:articleName', function (req, res) {
  
 //  pool.query("SELECT * FROM article WHERE title=$1", [req.params.articleName], function(err,result) {  
