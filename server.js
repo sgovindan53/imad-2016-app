@@ -108,6 +108,14 @@ app.get('/hash/:input', function (req, res) {
     res.send(hashedString);
 });
 
+app.get('/create-user', function(req, res) {
+    // takes the username and password and creates an entry in the user table
+    var salt = crypto.getRandomBytes(128).toString('hex');
+    var dbString = hash(password, salt);
+    pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)' [username, dbstring] function (err, result) {
+        
+    });
+    });
 
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
