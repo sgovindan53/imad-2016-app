@@ -143,6 +143,9 @@ app.get('/hash/:input', function (req, res) {
            var hashedPassword = hash(password, salt); //Creating a hash based on the password submitted and the original salt
            if (hashedPassword = dbstring) {
                res.send("credentials correct");
+               
+       // set a session. Before that, let's actually implement the login on the UI (i.e. on th eapp page). So go to the index.html page
+               
            } else {
             res.send(403).send('username/password is invalid');   
            }
